@@ -1,0 +1,14 @@
+<h1>編集する</h1>
+<%= form_with model:@post, local:true do |f| %>
+  <h4>ひとこと</h4> 
+  <%= f.text_field :location %>
+  <h4>内容</h4>
+  <%= f.text_area :text %><br>
+  <h4>画像</h4>
+  <% if @post.image.attached? %>
+    <%= image_tag @post.image.variant(resize_to_limit: [450, 350]) %><br>
+  <% end %>
+  <h4>画像を変更する</h4>
+  <%= f.file_field :image %><br>
+  <%= f.submit '保存' %>
+<% end %>

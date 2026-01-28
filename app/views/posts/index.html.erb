@@ -1,0 +1,9 @@
+<h1>投稿一覧</h1>
+<% @posts.each do |post| %>
+  <p>ひとこと</p>
+  <span><%= link_to post.location, post_path(post) %></span>
+  <p>画像</p>
+  <% if post.image.attached? %>
+  　<%= image_tag post.image.variant(resize_to_limit: [300, 200]) %>
+　<% end %>
+<% end %>
