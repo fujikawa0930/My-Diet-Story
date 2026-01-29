@@ -1,0 +1,21 @@
+.title {
+    font-family: cursive;
+  }
+  
+  .sub-title {
+    font-family: serif;
+  }
+  
+  .text-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;    
+  }
+
+  .btn-area {
+    display: flex;
+    gap: 12px;
+    margin-top:16px; 
+  }
