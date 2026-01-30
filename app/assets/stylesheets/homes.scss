@@ -1,21 +1,26 @@
-.title {
-    font-family: cursive;
-  }
-  
-  .sub-title {
-    font-family: serif;
-  }
-  
-  .text-center {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    height: 100vh;    
-  }
+// トップページのヒーローエリア（実務では BEM 風のクラス名で役割が分かりやすく）
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  text-align: center;
+}
 
-  .btn-area {
-    display: flex;
-    gap: 12px;
-    margin-top:16px; 
-  }
+.hero__sub-title {
+  font-family: serif;
+  margin-bottom: 0.5rem;
+}
+
+.hero__title {
+  font-family: cursive;
+  margin-bottom: 1.5rem;
+}
+
+.hero__btn-area {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
