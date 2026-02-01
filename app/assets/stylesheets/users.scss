@@ -1,0 +1,13 @@
+.profile {
+  padding: 15px;
+}
+
+// プロフィール編集・表示で使う画像を円形に
+.profile-img--round {
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.profile-image-preview {
+  display: inline-block;
+}
