@@ -2,19 +2,6 @@
     <div class="row mt-5">
       <h1 class="font-weight-normal">投稿一覧</h1>
     </div>
-    <div class="row mt-5 index-left w-100">
-      <% @posts.each do |post| %>
-        <div class="one-post col-sm-4 mb-3">
-          <%= link_to post_path(post) do %>
-            <p class="caption"><%= post.user.name %></p>
-            <% if post.image.attached? %>
-              <%= image_tag post.image.variant(resize_to_limit: [300, 200]) %><br>
-            <% end %>
-            <p class="caption"><%= post.location %></p>
-            <p class="caption"><%= "#{post.comments.count} コメント" %></p>
-          <% end %>
-        </div>
-      <% end %>
-       <%= paginate @posts %>
+<%= render 'index', posts: @posts %>
     </div>
   </div>

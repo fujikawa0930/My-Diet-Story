@@ -1,0 +1,29 @@
+ja:
+  devise:
+    failure:
+      already_authenticated: "すでにログインしています。"
+      inactive: "アカウントが有効化されていません。"
+      invalid: "Eメールまたはパスワードが違います。"
+      locked: "アカウントはロックされています。"
+      last_attempt: "あと1回でアカウントがロックされます。"
+      not_found_in_database: "Eメールまたはパスワードが違います。"
+      timeout: "セッションの有効期限が切れました。再度ログインしてください。"
+      unauthenticated: "ログインまたは新規登録してください。"
+      unconfirmed: "メールアドレスの確認が完了していません。"
+    sessions:
+      signed_in: "ログインしました。"
+      signed_out: "ログアウトしました。"
+      already_signed_out: "ログアウトしました。"
+  errors:
+    format: "%{message}"
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              blank: "Eメールを入力してください。"
+            password:
+              blank: "パスワードを入力してください。"
+            name:
+              blank: "名前を入力してください。"
