@@ -3,6 +3,7 @@
     <div class="row mt-5">
       <h1 class="font-weight-normal">フォロー一覧</h1>
     </div>
-    <%= render 'index', users: @users, user: @user %>
+    <p class="mb-3"><%= link_to "掲示板一覧へ戻る", posts_path, class: "btn btn-outline-secondary" %></p>
+    <%= render 'index', users: @users %>
   </div>
 </div>

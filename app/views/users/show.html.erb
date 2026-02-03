@@ -36,7 +36,21 @@
         <h6>フォロワー<%= @follower_users.count %></h6>
       <% end %>
     </div>
-    <div class="row mt-5 index-left w-100">
+
+    <% if user_signed_in? && @user == current_user %>
+      <div class="row mt-5 w-100">
+        <h5 class="mb-3">体重記録</h5>
+        <%= form_with model: [@user, @weight_record], url: user_weights_path(@user), local: true, class: "form-inline mb-4" do |f| %>
+          <%= f.date_field :date, class: "form-control mr-2" %>
+          <%= f.number_field :value, step: 0.1, placeholder: "体重(kg)", class: "form-control mr-2", style: "width: 120px;" %>
+          <%= f.submit "記録する", class: "btn btn-success" %>
+        <% end %>
+        <%= render "weights/calendar", user: @user, calendar_date: @calendar_date, weights_by_date: @weights_by_date %>
+      </div>
+      <h5 class="mt-5 mb-3">自分の投稿一覧（記録）</h5>
+    <% end %>
+
+    <div class="row mt-3 index-left w-100">
       <% @posts.each do |post| %>
         <div class="one-post col-sm-3 mb-3">
           <%= link_to post_path(post) do %>

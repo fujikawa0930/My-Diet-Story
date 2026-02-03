@@ -1,6 +1,6 @@
 <div class="container d-flex flex-column align-items-center">
     <div class="row mt-5">
-      <h1 class="font-weight-normal">新規投稿</h1>
+      <h1 class="font-weight-normal"><%= @from_board ? '掲示板に投稿' : '新規投稿' %></h1>
     </div>
     <% if @post.errors.any? %>
   <div class="card text-center text-white bg-danger mt-3">
@@ -11,22 +11,26 @@
   </div>
 <% end %>
     <div class="row mt-5">
-      <%= form_with model: @post, local:true do |f| %>
+      <%= form_with model: @post, url: posts_path, local: true, html: { multipart: true } do |f| %>
+        <%= hidden_field_tag :from, "board" if @from_board %>
         <div class="form-group mb-3">
           <label class="form-label">【ひとこと】</label>
           <%= f.text_field :location, class: "form-control" %>
         </div>
         <div class="form-group mb-3">
           <label class="form-label">【内容】</label>
-          <%=f.text_area :text, rows: 10, class: "form-control" %>
+          <%= f.text_area :text, rows: 10, class: "form-control" %>
         </div>
         <div class="form-group mb-3">
-          <label class="form-label">【画像】</label><br>
+          <label class="form-label">【画像】</label>
+          <span class="small text-muted">（任意）</span><br>
           <%= f.file_field :image %>
         </div>
-        <div class="form-group">
-        <%= f.select :status, Post.statuses.keys.map { |k| [t("enums.post.status.#{k}"),k]}, {}, {class: "custom-select w-25 mb-3"} %>
-        </div>
+        <% if @from_board %>
+          <p class="small text-muted mb-3">※ この投稿は掲示板一覧に表示され、だれでもコメントできます。</p>
+        <% else %>
+          <p class="small text-muted mb-3">※ この投稿は投稿一覧にだけ表示され、あなただけが閲覧できます。</p>
+        <% end %>
         <%= f.submit '投稿する', class: "btn btn-success" %>
       <% end %>
     </div>

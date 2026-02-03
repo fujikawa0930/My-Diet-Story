@@ -12,6 +12,7 @@ class User < ApplicationRecord
          has_many :following_user, through: :follower, source: :followed
          has_many :follower_user, through: :followed, source: :follower
          has_one_attached :profile_image
+         has_many :weights, dependent: :destroy
          validates :name, presence: true
 
          # ユーザーをフォローする

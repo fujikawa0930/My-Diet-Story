@@ -1,0 +1,50 @@
+<% # 表示月の1日と末日 %>
+<% start_date = calendar_date.beginning_of_month %>
+<% end_date = calendar_date.end_of_month %>
+<% # カレンダーを週で区切るため、開始日をその月の最初の週の日曜日にそろえる（月曜始まりなら月曜） %>
+<% first_week_start = start_date.beginning_of_week %>
+<% last_week_end = end_date.end_of_week %>
+<% weights_by_date = weights_by_date || {} %>
+
+<div class="weight-calendar mb-4">
+  <h5 class="mb-2"><%= start_date.strftime("%Y年%m月") %></h5>
+  <div class="d-flex mb-2">
+    <%= link_to "前月", user_path(user, weight_year: start_date.prev_month.year, weight_month: start_date.prev_month.month), class: "btn btn-sm btn-outline-secondary mr-2" %>
+    <%= link_to "今月", user_path(user), class: "btn btn-sm btn-outline-secondary mr-2" %>
+    <%= link_to "翌月", user_path(user, weight_year: start_date.next_month.year, weight_month: start_date.next_month.month), class: "btn btn-sm btn-outline-secondary" %>
+  </div>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <% %w(日 月 火 水 木 金 土).each do |w| %>
+          <th class="text-center" style="width: 14%;"><%= w %></th>
+        <% end %>
+      </tr>
+    </thead>
+    <tbody>
+      <% (first_week_start..last_week_end).to_a.each_slice(7) do |week_dates| %>
+        <tr>
+          <% 7.times do |i| %>
+            <% d = week_dates[i] %>
+            <td class="p-2" style="min-height: 60px; vertical-align: top;">
+              <% if d %>
+                <% if d.month == start_date.month %>
+                  <span class="small text-muted"><%= d.day %></span>
+                  <% w = weights_by_date[d] %>
+                  <% if w %>
+                    <div class="mt-1">
+                      <strong><%= w.value %></strong> kg
+                      <%= button_to "削除", user_weight_path(user, w), data: { turbo_method: :delete, turbo_confirm: "この日の記録を削除しますか？" }, class: "btn btn-sm btn-outline-danger mt-1" %>
+                    </div>
+                  <% end %>
+                <% else %>
+                  <span class="text-muted small"><%= d.day %></span>
+                <% end %>
+              <% end %>
+            </td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

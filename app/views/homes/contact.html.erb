@@ -1,0 +1,20 @@
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <h1 class="mb-4">お問い合わせ</h1>
+      <p class="text-muted mb-4">お問い合わせは下記フォームから送信してください。</p>
+      <%= form_with url: contact_path, method: :post, local: true do |f| %>
+        <div class="form-group mb-3">
+          <%= f.label :email, "メールアドレス" %>
+          <%= f.email_field :email, class: "form-control", placeholder: "example@example.com" %>
+        </div>
+        <div class="form-group mb-3">
+          <%= f.label :message, "お問い合わせ内容" %>
+          <%= f.text_area :message, class: "form-control", rows: 5, placeholder: "お問い合わせ内容を入力してください" %>
+        </div>
+        <%= f.submit "送信する", class: "btn btn-success" %>
+      <% end %>
+      <p class="mt-4"><%= link_to "トップへ戻る", root_path, class: "btn btn-outline-secondary" %></p>
+    </div>
+  </div>
+</div>

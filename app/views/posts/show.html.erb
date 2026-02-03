@@ -16,7 +16,7 @@
       <div class="d-block">
       <p class="caption"><%= @post.user.name %></p>
       <% if @post.image.attached? %>
-        <%= image_tag @post.image.variant(resize_to_limit: [450, 350]) %><br>
+        <%= image_tag @post.image, style: "max-width: 450px; max-height: 350px; object-fit: contain;" %><br>
         <p class="caption"><%= @post.location %>
         <% if @post.favorited_by?(current_user) %>
           <%= link_to post_favorites_path(@post),  data: { turbo_method: :delete }, class: "favorite_btn" do %>

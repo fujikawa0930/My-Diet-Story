@@ -1,0 +1,15 @@
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <% if @slug == "prologue" %>
+        <h1 class="mb-4">プロローグ</h1>
+        <div class="story-content">
+          <p>ここにプロローグの本文を書きます。ストーリーが解放されたら、この部分を更新してください。</p>
+        </div>
+      <% else %>
+        <p class="text-muted">該当するストーリーはありません。</p>
+      <% end %>
+      <p class="mt-4"><%= link_to "ストーリー一覧へ戻る", stories_path, class: "btn btn-outline-secondary" %></p>
+    </div>
+  </div>
+</div>
