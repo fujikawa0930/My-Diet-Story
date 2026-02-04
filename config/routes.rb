@@ -25,4 +25,12 @@ Rails.application.routes.draw do
 
   get 'stories', to: 'stories#index', as: :stories
   get 'stories/:slug', to: 'stories#show', as: :story
+
+  resources :diary_posts do
+    collection do
+      get :drafts
+    end
+  end
+
+  resources :board_posts
 end

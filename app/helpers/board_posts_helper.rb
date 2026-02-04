@@ -1,0 +1,2 @@
+module BoardPostsHelper
+end

@@ -61,6 +61,7 @@ ActiveRecord::Schema[7.1].define(version: 2026_02_03_093754) do
     t.datetime "updated_at", null: false
     t.integer "user_id"
     t.integer "status", default: 0, null: false
+    t.integer "kind", default: 0, null: false
   end
 
   create_table "relationships", force: :cascade do |t|
