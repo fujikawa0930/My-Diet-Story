@@ -1,0 +1,10 @@
+<h1>掲示板</h1>
+
+<p><%= link_to "掲示板に投稿する", new_board_post_path %></p>
+
+<% @posts.each do |post| %>
+  <div style="margin-bottom: 16px;">
+    <strong><%= post.user.name %></strong><br>
+    <%= post.text %>
+  </div>
+<% end %>

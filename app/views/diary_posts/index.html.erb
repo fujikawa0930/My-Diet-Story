@@ -1,0 +1,12 @@
+<h1>自分の日記</h1>
+
+<p>
+  <%= link_to "日記を書く", new_diary_post_path %> |
+  <%= link_to "下書き一覧", drafts_diary_posts_path %>
+</p>
+
+<% @posts.each do |post| %>
+  <div style="margin-bottom: 16px;">
+    <%= post.text %>
+  </div>
+<% end %>

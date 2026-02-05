@@ -1,0 +1,12 @@
+<h1>掲示板に投稿</h1>
+
+<%= form_with model: @post, url: board_posts_path, local: true do |f| %>
+  <div>
+    <%= f.label :text %><br>
+    <%= f.text_area :text %>
+  </div>
+
+  <div>
+    <%= f.submit "掲示板に投稿" %>
+  </div>
+<% end %>

@@ -6,15 +6,6 @@ Rails.application.routes.draw do
   get 'contact', to: 'homes#contact', as: :contact
   post 'contact', to: 'homes#contact_submit'
 
-  resources :posts do
-    resources :comments, only: [:create, :destroy]
-    resource :favorites, only: [:create, :destroy]
-    collection do
-      get 'confirm'
-      get 'my_posts'
-    end
-  end
-
   resources :users, only: [:index, :show, :edit, :update] do
     member do
       get :follows, :followers
@@ -32,5 +23,8 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :board_posts
+  resources :board_posts do
+    resources :comments, only: [:create, :destroy]
+    resource :favorites, only: [:create, :destroy]
+  end
 end

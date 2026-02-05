@@ -1,0 +1,13 @@
+<h1>日記投稿</h1>
+
+<%= form_with model: @post, url: diary_posts_path, local: true do |f| %>
+  <div>
+    <%= f.label :text %><br>
+    <%= f.text_area :text %>
+  </div>
+
+  <div>
+    <%= f.submit "投稿する", name: "save_as", value: "published" %>
+    <%= f.submit "下書き保存", name: "save_as", value: "draft" %>
+  </div>
+<% end %>
