@@ -47,21 +47,5 @@
         <% end %>
         <%= render "weights/calendar", user: @user, calendar_date: @calendar_date, weights_by_date: @weights_by_date %>
       </div>
-      <h5 class="mt-5 mb-3">自分の投稿一覧（記録）</h5>
     <% end %>
-
-    <div class="row mt-3 index-left w-100">
-      <% @posts.each do |post| %>
-        <div class="one-post col-sm-3 mb-3">
-          <%= link_to post_path(post) do %>
-           <% if post.image.attached? %>
-              <%= image_tag post.image.variant(resize_to_limit: [200, 133]) %>
-            <% end %>
-           <p class="caption mb-0"><%= post.location %></p>
-           <p class="caption"><%= "#{post.comments.count} コメント" %></p>
-          <% end %>
-        </div>
-      <% end %>
-    </div>
-    <%= paginate @posts %>
   </div>

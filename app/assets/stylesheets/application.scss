@@ -71,3 +71,9 @@ a:hover {
 .profile-img {
   border-radius: 50%;
 }
+
+/* 掲示板・投稿一覧は背景なし（白背景） */
+.list-page {
+  background-color: #fff;
+  min-height: 100%;
+}

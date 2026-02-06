@@ -1,12 +1,33 @@
-<h1>掲示板に投稿</h1>
+<div class="container" style="max-width: 600px;">
+  <h1 class="font-weight-normal mb-4">掲示板に投稿</h1>
 
-<%= form_with model: @post, url: board_posts_path, local: true do |f| %>
-  <div>
-    <%= f.label :text %><br>
-    <%= f.text_area :text %>
-  </div>
+  <% if @post.errors.any? %>
+    <div class="alert alert-danger">
+      <%= @post.errors.count %>件のエラーが発生しました
+      <% @post.errors.full_messages.each do |message| %>
+        <div><%= message %></div>
+      <% end %>
+    </div>
+  <% end %>
 
-  <div>
-    <%= f.submit "掲示板に投稿" %>
-  </div>
-<% end %>
+  <%= form_with model: @post, url: board_posts_path, local: true, html: { multipart: true } do |f| %>
+    <div class="mb-3">
+      <%= f.label :location, "旅行先", class: "form-label" %>
+      <%= f.text_field :location, class: "form-control", placeholder: "例：奈良" %>
+    </div>
+
+    <div class="mb-3">
+      <%= f.label :text, "感想", class: "form-label" %>
+      <%= f.text_area :text, rows: 6, class: "form-control", placeholder: "例：鹿が可愛かった。" %>
+    </div>
+
+    <div class="mb-3">
+      <%= f.label :image, "画像", class: "form-label" %>
+      <%= f.file_field :image, class: "form-control", accept: "image/*" %>
+    </div>
+
+    <div class="mt-4">
+      <%= f.submit "投稿する", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>
