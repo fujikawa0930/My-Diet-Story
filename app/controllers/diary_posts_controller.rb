@@ -1,16 +1,14 @@
 class DiaryPostsController < ApplicationController
     before_action :authenticate_user!
-  
-    def index
-      # kind カラムが無い環境でも動くように、status のみで絞り込む
-      @posts = current_user.posts.where(status: :published).order(created_at: :desc)
-    end
-    
-  
-    def drafts
-      # 自分の日記（下書き）※ kind では絞らず、status のみ
-      @posts = current_user.posts.where(status: :draft).order(updated_at: :desc)
-    end
+
+    # app/controllers/diary_posts_controller.rb
+   def index
+    @posts = current_user.posts.where(kind: :diary, status: :published).order(updated_at: :desc)
+   end
+
+   def drafts
+    @posts = current_user.posts.where(kind: :diary, status: :draft).order(updated_at: :desc)
+   end
 
     def show
       @post = current_user.posts.find(params[:id])
@@ -30,16 +28,12 @@ class DiaryPostsController < ApplicationController
     end
   
     def new
-      # 日記を書く画面
+      # 投稿する画面：自分しか見られない日記に投稿（下書き可）
       @post = current_user.posts.new(kind: :diary)
     end
 
-    def index
-      @posts = current_user.posts.where(kind: :diary, status: :draft).order(updated_at: :desc)
-    end
-  
     def create
-      status = params[:save_as] == "draft" ? :draft : :published
+      status = params[:save_as] == "下書き保存" ? :draft : :published
       @post = current_user.posts.new(post_params.merge(kind: :diary, status: status))
       if @post.save
         redirect_to status == :draft ? drafts_diary_posts_path : diary_posts_path

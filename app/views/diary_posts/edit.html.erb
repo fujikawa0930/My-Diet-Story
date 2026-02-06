@@ -12,13 +12,13 @@
 
   <%= form_with model: @post, url: diary_post_path(@post), method: :patch, local: true, html: { multipart: true } do |f| %>
     <div class="mb-3">
-      <%= f.label :location, "旅行先", class: "form-label" %>
-      <%= f.text_field :location, class: "form-control", placeholder: "例：奈良" %>
+      <%= f.label :location, "やったこと", class: "form-label" %>
+      <%= f.text_field :location, class: "form-control", placeholder: "例：運動" %>
     </div>
 
     <div class="mb-3">
       <%= f.label :text, "感想", class: "form-label" %>
-      <%= f.text_area :text, rows: 6, class: "form-control", placeholder: "例：鹿が可愛かった。" %>
+      <%= f.text_area :text, rows: 6, class: "form-control", placeholder: "例：ピラティスに入会した" %>
     </div>
 
     <div class="mb-3">

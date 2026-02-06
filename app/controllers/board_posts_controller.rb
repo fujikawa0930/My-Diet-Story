@@ -3,7 +3,7 @@ class BoardPostsController < ApplicationController
   
     def index
       # 掲示板に公開されている投稿を新しい順に表示
-      @posts = Post.where(status: :published).order(created_at: :desc)
+      @posts = Post.where(kind: :board, status: :published).order(updated_at: :desc)
     end
     
   def show
@@ -32,16 +32,9 @@ class BoardPostsController < ApplicationController
     end
   
     def create
-      @post = current_user.posts.new(
-        post_params.merge(kind: :board, status: :published)
-      )
-    
-      def index
-        @posts = Post.where(kind: :board, status: :published).includes(:user).order(created_at: :desc)
-      end
-    
-if @post.save
-        redirect_to board_posts_path
+      @post = current_user.posts.new(post_params.merge(kind: :board, status: :published))
+      if @post.save
+        redirect_to board_posts_path, notice: "掲示板に投稿しました"
       else
         render :new, status: :unprocessable_entity
       end
@@ -63,4 +56,3 @@ if @post.save
       params.require(:post).permit(:location, :text, :image)
     end
   end
-  

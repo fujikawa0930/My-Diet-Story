@@ -2,6 +2,7 @@
   <div class="row mt-5">
     <h1 class="font-weight-normal">掲示板一覧</h1>
   </div>
+  <p class="text-muted small mb-2">すべてのユーザーの投稿が表示されます。</p>
 
   <p class="mb-3">
     <%= link_to "掲示板に投稿する", new_board_post_path, class: "btn btn-primary" %>
@@ -23,6 +24,7 @@
               <% end %>
             <% end %>
             <p class="card-text mt-2 mb-0"><%= post.location.presence || "—" %></p>
+            <p class="card-text mb-0 small text-muted">♥ <%= post.favorites.count %> いいね</p>
           </div>
           <div class="card-footer bg-white border-0 pt-0 d-flex flex-wrap gap-1 align-items-center">
             <%= link_to "詳細・コメント", board_post_path(post), class: "btn btn-sm btn-outline-secondary" %>

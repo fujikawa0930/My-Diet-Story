@@ -12,13 +12,13 @@
 
   <%= form_with model: @post, url: board_post_path(@post), method: :patch, local: true, html: { multipart: true } do |f| %>
     <div class="mb-3">
-      <%= f.label :location, "旅行先", class: "form-label" %>
-      <%= f.text_field :location, class: "form-control", placeholder: "例：奈良" %>
+      <%= f.label :location, "題名", class: "form-label" %>
+      <%= f.text_field :location, class: "form-control", placeholder: "例：体重が減らない" %>
     </div>
 
     <div class="mb-3">
-      <%= f.label :text, "感想", class: "form-label" %>
-      <%= f.text_area :text, rows: 6, class: "form-control", placeholder: "例：鹿が可愛かった。" %>
+      <%= f.label :text, "相談内容", class: "form-label" %>
+      <%= f.text_area :text, rows: 6, class: "form-control", placeholder: "例：食事のアドバイスが欲しい" %>
     </div>
 
     <div class="mb-3">

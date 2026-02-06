@@ -3,7 +3,7 @@
     <div class="row mt-5">
       <h1 class="font-weight-normal">下書き一覧</h1>
     </div>
-    <p class="mb-3"><%= link_to "掲示板一覧へ戻る", posts_path, class: "btn btn-outline-secondary" %></p>
-    <%= render 'index', posts: @posts, search_path: posts_path %>
+    <p class="mb-3"><%= link_to "掲示板一覧へ戻る", board_posts_path, class: "btn btn-outline-secondary" %></p>
+    <%= render 'index', posts: @posts, search_path: board_posts_path %>
   </div>
 </div>
