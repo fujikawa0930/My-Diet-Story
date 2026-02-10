@@ -47,3 +47,6 @@ ENTRYPOINT ["/rails/bin/docker-entrypoint"]
 # Start the server by default, this can be overwritten at runtime
 EXPOSE 3000
 CMD ["./bin/rails", "server"]
+
+apt-get install --no-install-recommends -y \
+  build-essential git libvips pkg-config libyaml-dev
