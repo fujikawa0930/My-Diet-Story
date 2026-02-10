@@ -32,8 +32,14 @@ RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
 # Final stage for app image
 FROM base
 # Install packages needed for deployment
-RUN apt-get install --no-install-recommends -y \
-build-essential git libvips pkg-config libyaml-dev
+RUN apt-get update -qq && \
+    apt-get install --no-install-recommends -y \
+      build-essential \
+      git \
+      libvips \
+      pkg-config \
+      libyaml-dev && \
+    rm -rf /var/lib/apt/lists/*
 # Copy built artifacts: gems, application
 COPY --from=build /usr/local/bundle /usr/local/bundle
 COPY --from=build /rails /rails
