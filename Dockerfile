@@ -11,9 +11,10 @@ ENV RAILS_ENV="production" \
     BUNDLE_WITHOUT="development"
 # Throw-away build stage to reduce size of final image
 FROM base as build
-# Install packages needed to build gems
+# Install packages needed for deployment
 RUN apt-get update -qq && \
-apt-get install --no-install-recommends -y build-essential git libvips pkg-config libpq-dev nodejs
+    apt-get install --no-install-recommends -y curl libsqlite3-0 libvips libpq5 nodejs && \
+    rm -rf /var/lib/apt/lists/*
 # Install application gems
 COPY Gemfile Gemfile.lock ./
 RUN bundle install && \
