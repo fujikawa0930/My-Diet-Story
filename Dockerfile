@@ -14,12 +14,12 @@ FROM base as build
 # Install packages needed to build gems
 RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y \
-    build-essential git libvips pkg-config libpq-dev libyaml-dev && \
-    rm -rf /var/lib/apt/lists /var/cache/apt/archives
+      build-essential git libvips pkg-config libpq-dev libyaml-dev && \
+    rm -rf /var/lib/apt/lists/* /var/cache/apt/archives/*
 # Install application gems
 COPY Gemfile Gemfile.lock ./
-RUN bundle install &&
-    rm -rf ~/.bundle/ "${BUNDLE_PATH}"/ruby/*/cache "${BUNDLE_PATH}"/ruby/*/bundler/gems/*/.git &&
+RUN bundle install && \
+    rm -rf ~/.bundle/ "${BUNDLE_PATH}"/ruby/*/cache "${BUNDLE_PATH}"/ruby/*/bundler/gems/*/.git && \
     bundle exec bootsnap precompile --gemfile
 # Copy application code
 COPY . .
@@ -34,9 +34,10 @@ RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile --trace
 # Final stage for app image
 FROM base
 # Install packages needed for deployment
-RUN apt-get update -qq &&
-    apt-get install --no-install-recommends -y curl libsqlite3-0 libvips libpq-dev &&
-    rm -rf /var/lib/apt/lists /var/cache/apt/archives
+RUN apt-get update -qq && \
+    apt-get install --no-install-recommends -y \
+      curl libsqlite3-0 libvips libpq5 nodejs && \
+    rm -rf /var/lib/apt/lists/* /var/cache/apt/archives/*
 # Copy built artifacts: gems, application
 COPY --from=build /usr/local/bundle /usr/local/bundle
 COPY --from=build /rails /rails
