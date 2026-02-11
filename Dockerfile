@@ -13,9 +13,7 @@ ENV RAILS_ENV="production" \
 FROM base as build
 # Install packages needed to build gems
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y \
-      build-essential git libvips pkg-config libyaml-dev && \
-    rm -rf /var/lib/apt/lists/*
+apt-get install --no-install-recommends -y build-essential git libvips pkg-config libpq-dev nodejs
 # Install application gems
 COPY Gemfile Gemfile.lock ./
 RUN bundle install && \
@@ -35,13 +33,7 @@ RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile --trace
 FROM base
 # Install packages needed for deployment
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y \
-      build-essential \
-      git \
-      libvips \
-      pkg-config \
-      libyaml-dev && \
-    rm -rf /var/lib/apt/lists/*
+apt-get install --no-install-recommends -y curl libsqlite3-0 libvips libpq5 nodejs && \
 # Copy built artifacts: gems, application
 COPY --from=build /usr/local/bundle /usr/local/bundle
 COPY --from=build /rails /rails
