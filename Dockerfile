@@ -33,8 +33,13 @@ RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile --trace
 FROM base
 # Install packages needed for deployment
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y curl libsqlite3-0 libvips libpq-dev && \
-    rm -rf /var/lib/apt/lists /var/cache/apt/archives
+  apt-get install --no-install-recommends -y \
+  build-essential \
+  git \
+  libvips \
+  pkg-config \
+  libpq-dev \
+  libyaml-dev
 # Copy built artifacts: gems, application
 COPY --from=build /usr/local/bundle /usr/local/bundle
 COPY --from=build /rails /rails
