@@ -8,9 +8,12 @@ WORKDIR /rails
 ENV RAILS_ENV="production" \
     BUNDLE_DEPLOYMENT="1" \
     BUNDLE_PATH="/usr/local/bundle" \
-    BUNDLE_WITHOUT="development"
+    BUNDLE_WITHOUT="development:test"
 # Throw-away build stage to reduce size of final image
 FROM base as build
+RUN apt-get update -qq && \
+  apt-get install --no-install-recommends -y \
+  build-essential git libvips pkg-config libpq-dev libyaml-dev
 # Install packages needed to build gems
 RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y build-essential git libvips pkg-config libpq-dev
@@ -33,13 +36,8 @@ RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile --trace
 FROM base
 # Install packages needed for deployment
 RUN apt-get update -qq && \
-  apt-get install --no-install-recommends -y \
-  build-essential \
-  git \
-  libvips \
-  pkg-config \
-  libpq-dev \
-  libyaml-dev
+    apt-get install --no-install-recommends -y curl libsqlite3-0 libvips libpq-dev && \
+    rm -rf /var/lib/apt/lists /var/cache/apt/archives
 # Copy built artifacts: gems, application
 COPY --from=build /usr/local/bundle /usr/local/bundle
 COPY --from=build /rails /rails
