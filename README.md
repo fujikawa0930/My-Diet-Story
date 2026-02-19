@@ -34,21 +34,29 @@
 
 # 利用方法
 ・ユーザー新規登録を行う、またはログインする
+<img width="372" height="444" alt="image" src="https://github.com/user-attachments/assets/15b337e8-7da8-4138-badf-a2fb172762ae" />
+<img width="390" height="455" alt="image" src="https://github.com/user-attachments/assets/918a8697-341f-4571-ad0c-8794809ff3c9" />
+
+・自分の体重ややったことを投稿
+<img width="1384" height="762" alt="image" src="https://github.com/user-attachments/assets/2d3f97cd-808f-4956-8fb9-bc3ca5be4640" />
+<img width="640" height="613" alt="image" src="https://github.com/user-attachments/assets/deadb7f8-891b-448f-938e-7ec8f0c79d2f" />
+
+・掲示板で他ユーザーと交流可能
+<img width="337" height="463" alt="image" src="https://github.com/user-attachments/assets/3f33a7a7-b166-4ca5-b06f-31d28932cca6" />
+
+・解放されたストーリーを読める
 
 # 機能一覧
 ・基本的なCRUD機能
-・ユーザー認証機能(devise)
-・画像アップロード機能(Refile)
-・いいね機能
-・コメント機能
-・フォローフォロワー機能
-・DM機能
-・下書き機能
-・検索機能
-・閲覧数表示機能
-・バリデーション
-・ページネーション
-・レスポンシブ対応
+・ユーザー認証（Devise）
+・投稿機能（CRUD / Rails）
+・掲示板機能（CRUD / Rails）
+・いいね機能（Ajax / 非同期通信）
+・画像アップロード（Active Storage）
+・お問い合わせ機能（ActionMailer）
+・ページネーション機能（Kaminari）
+・DB設計（PostgreSQL）
+・クラウドデプロイ（Render）
 
 # 開発環境
 ・Windows11 + Git Bash
