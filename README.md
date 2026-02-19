@@ -39,12 +39,12 @@
 
 ・自分の体重ややったことを投稿
 <img width="1384" height="762" alt="image" src="https://github.com/user-attachments/assets/2d3f97cd-808f-4956-8fb9-bc3ca5be4640" />
-<img width="640" height="613" alt="image" src="https://github.com/user-attachments/assets/deadb7f8-891b-448f-938e-7ec8f0c79d2f" />
 
 ・掲示板で他ユーザーと交流可能
-<img width="337" height="463" alt="image" src="https://github.com/user-attachments/assets/3f33a7a7-b166-4ca5-b06f-31d28932cca6" />
+<img width="640" height="613" alt="image" src="https://github.com/user-attachments/assets/deadb7f8-891b-448f-938e-7ec8f0c79d2f" />
 
 ・解放されたストーリーを読める
+<img width="337" height="463" alt="image" src="https://github.com/user-attachments/assets/3f33a7a7-b166-4ca5-b06f-31d28932cca6" />
 
 # 機能一覧
 ・基本的なCRUD機能
