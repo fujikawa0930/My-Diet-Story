@@ -54,20 +54,20 @@
 
 
 # 機能一覧
-・基本的なCRUD機能
-・ユーザー認証（Devise）
-・投稿機能（CRUD / Rails）
-・掲示板機能（CRUD / Rails）
-・いいね機能（Ajax / 非同期通信）
-・画像アップロード（Active Storage）
-・お問い合わせ機能（ActionMailer）
-・ページネーション機能（Kaminari）
-・DB設計（PostgreSQL）
-・クラウドデプロイ（Render）
+・基本的なCRUD機能  
+・ユーザー認証（Devise）  
+・投稿機能（CRUD / Rails）  
+・掲示板機能（CRUD / Rails）  
+・いいね機能（Ajax / 非同期通信）  
+・画像アップロード（Active Storage）  
+・お問い合わせ機能（ActionMailer）  
+・ページネーション機能（Kaminari）  
+・DB設計（PostgreSQL）  
+・クラウドデプロイ（Render）  
 
 # 開発環境
-・Windows11 + Git Bash
-・言語：HTML、CSS、JavaScript、Ruby
-・フレームワーク：Ruby on Rails
-・JSライブラリ：jQuery
-・データベース：PostgreSQL
+・Windows11 + Git Bash  
+・言語：HTML、CSS、JavaScript、Ruby  
+・フレームワーク：Ruby on Rails  
+・JSライブラリ：jQuery  
+・データベース：PostgreSQL  
