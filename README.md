@@ -34,18 +34,22 @@
 
 # 利用方法
 ・ユーザー新規登録を行う、またはログインする
-<img width="372" height="444" alt="image" src="https://github.com/user-attachments/assets/15b337e8-7da8-4138-badf-a2fb172762ae" />
+
+<img width="317" height="254" alt="image" src="https://github.com/user-attachments/assets/37b56d45-97fe-45fe-94d9-d0147e28eaa7" />
 <img width="390" height="455" alt="image" src="https://github.com/user-attachments/assets/918a8697-341f-4571-ad0c-8794809ff3c9" />
 
 ・自分の体重ややったことを投稿
+
 <img width="1384" height="762" alt="image" src="https://github.com/user-attachments/assets/2d3f97cd-808f-4956-8fb9-bc3ca5be4640" />
 
 
 ・掲示板で他ユーザーと交流可能
+
 <img width="640" height="613" alt="image" src="https://github.com/user-attachments/assets/deadb7f8-891b-448f-938e-7ec8f0c79d2f" />
 
 
 ・解放されたストーリーを読める
+
 <img width="555" height="310" alt="image" src="https://github.com/user-attachments/assets/342779d9-1082-4946-a918-8ef8b933a245" />
 
 
